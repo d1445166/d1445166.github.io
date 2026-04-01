@@ -3,93 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星宇神諭 - 每日運勢占卜</title>
+    <title>五子棋遊戲</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
+    <div class="container">
+        <header>
+            <h1>五子棋</h1>
+            <p class="rules">規則：黑白雙方輪流落子，先將 5 顆同色棋子連成一線（橫、豎、斜）者獲勝。</p>
+        </header>
 
-    <main class="container">
-        <!-- 首頁畫面 -->
-        <section id="intro-section" class="card active">
-            <div class="card-content">
-                <div class="icon-container">
-                    <span class="moon-icon">🌙</span>
-                </div>
-                <h1>星宇神諭</h1>
-                <p class="subtitle">傾聽星辰的低語，揭露今日的命運軌跡</p>
-                
-                <div class="instruction">
-                    <p>請靜下心來，在心中默念您的問題，當您準備好時，請點擊下方按鈕抽取今日命運指引。</p>
-                </div>
+        <div class="game-info">
+            <div id="status">當前輪到：<span id="current-player" class="black-turn">黑子</span></div>
+            <button id="restart-btn">重新開始遊戲</button>
+        </div>
 
-                <button id="draw-btn" class="primary-btn">
-                    <span class="btn-text">抽取命運指引</span>
-                    <span class="sparkle">✨</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- 載入動畫畫面 -->
-        <section id="loading-section" class="card hidden">
-            <div class="card-content">
-                <div class="crystal-ball">
-                    <div class="glow"></div>
-                    <div class="inner-glow"></div>
-                </div>
-                <h2 class="loading-text">星象正在為您排列...</h2>
-            </div>
-        </section>
-
-        <!-- 結果畫面 -->
-        <section id="result-section" class="card hidden">
-            <div class="card-content">
-                <div class="result-header">
-                    <h2 id="fortune-type">大吉</h2>
-                    <p id="fortune-desc" class="fortune-desc">星辰為你指路，好運的能量正圍繞著你。</p>
-                </div>
-
-                <div class="aspects-grid">
-                    <div class="aspect-card">
-                        <div class="aspect-header">
-                            <span class="aspect-icon">💼</span>
-                            <h3>事業與學業</h3>
-                        </div>
-                        <p id="aspect-work">靈感湧現，提案容易獲得肯定。</p>
-                        <p id="aspect-study" class="sub-aspect">記憶力驚人，學習效率事半功倍。</p>
-                    </div>
-
-                    <div class="aspect-card">
-                        <div class="aspect-header">
-                            <span class="aspect-icon">❤️</span>
-                            <h3>感情與人際</h3>
-                        </div>
-                        <p id="aspect-love">魅力四射，可能會有意想不到的浪漫邂逅。</p>
-                    </div>
-
-                    <div class="aspect-card">
-                        <div class="aspect-header">
-                            <span class="aspect-icon">💰</span>
-                            <h3>財富與幸運</h3>
-                        </div>
-                        <p id="aspect-money">財星高照，有機會獲得意外之財。</p>
-                    </div>
-                </div>
-
-                <div class="closing-quote">
-                    <p id="fortune-closing">「大膽向前走吧，整個宇宙都在幫你！」</p>
-                </div>
-
-                <button id="retry-btn" class="secondary-btn">
-                    <span class="btn-text">再次占卜</span>
-                    <span class="sparkle">↺</span>
-                </button>
-            </div>
-        </section>
-    </main>
-
+        <div id="board" class="turn-black"></div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
