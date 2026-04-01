@@ -3,22 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>五子棋遊戲</title>
+    <title>神秘星空占卜</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>五子棋</h1>
-            <p class="rules">規則：黑白雙方輪流落子，先將 5 顆同色棋子連成一線（橫、豎、斜）者獲勝。</p>
-        </header>
-
-        <div class="game-info">
-            <div id="status">當前輪到：<span id="current-player" class="black-turn">黑子</span></div>
-            <button id="restart-btn">重新開始遊戲</button>
+    <div class="stars"></div>
+    <div class="fortune-container">
+        
+        <!-- 首頁區塊 -->
+        <div id="home-section" class="active">
+            <div class="crystal-ball">🔮</div>
+            <h1>神秘星空占卜</h1>
+            <p>想知道今天的運勢如何嗎？<br>集中精神，點擊下方按鈕抽取你的專屬指引。</p>
+            <button id="draw-btn" class="mystic-btn">抽取運勢籤</button>
         </div>
 
-        <div id="board" class="turn-black"></div>
+        <!-- 載入中區塊 -->
+        <div id="loading-section">
+            <div class="spinner"></div>
+            <p>正在為您連結宇宙能量...</p>
+        </div>
+
+        <!-- 結果區塊 -->
+        <div id="result-section">
+            <h2 id="fortune-name">大吉 🌟</h2>
+            <p id="fortune-desc" class="desc-text">今日運氣極佳...</p>
+            
+            <div class="aspects-grid">
+                <div class="aspect-card">
+                    <span class="aspect-icon">💼</span>
+                    <h3>工作</h3>
+                    <p id="fortune-work">...</p>
+                </div>
+                <div class="aspect-card">
+                    <span class="aspect-icon">📚</span>
+                    <h3>學業</h3>
+                    <p id="fortune-study">...</p>
+                </div>
+                <div class="aspect-card">
+                    <span class="aspect-icon">💖</span>
+                    <h3>愛情</h3>
+                    <p id="fortune-love">...</p>
+                </div>
+                <div class="aspect-card">
+                    <span class="aspect-icon">💰</span>
+                    <h3>金錢</h3>
+                    <p id="fortune-money">...</p>
+                </div>
+            </div>
+
+            <p id="fortune-closing" class="closing-text">結語...</p>
+            <button id="retry-btn" class="mystic-btn outline">再占卜一次</button>
+        </div>
+
     </div>
     <script src="script.js"></script>
 </body>
