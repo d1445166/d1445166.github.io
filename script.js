@@ -1,157 +1,150 @@
 // ==========================================
-// 占卜資料區 (集中管理，方便修改主題與內容)
+// 故事文本與分支節點資料
 // ==========================================
-const fortunesData = [
-    {
-        name: "大吉 🌟",
-        desc: "運勢如虹，勢不可擋！今天做什麼都超級順利！",
-        work: "即將迎來突破，主管或客戶非常賞識你的才華。",
-        study: "思緒清晰，過目不忘，考試能發揮超常實力。",
-        love: "桃花盛開，有機會遇到令人心動的對象或感情升溫。",
-        money: "偏財運極佳，或許會有一筆意外之財入帳。",
-        closing: "好好把握今天的好運，大膽去挑戰自己的目標吧！✨"
+const storyData = {
+    start: {
+        title: "第一章：初次的相遇",
+        text: "這是你在初光高中的第一天。你帶著忐忑不安的心情走到教室門口，卻發現裡面坐著一個很眼熟的男生。那是你國中時暗戀過、卻從來沒講過幾句話的學長。",
+        choices: [
+            { text: "鼓起勇氣，主動走過去打招呼。", target: "node2" },
+            { text: "假裝沒看到，低著頭找個偏僻的位子坐下。", target: "node3" }
+        ]
     },
-    {
-        name: "中吉 ☀️",
-        desc: "陽光明媚的一天，穩定的節奏為你帶來好心情。",
-        work: "工作進展順利，與同事合作無間，效率極高。",
-        study: "學習狀態良好，遇到不懂的難題也能迅速開竅。",
-        love: "感情穩定溫馨，適合安排一場簡單浪漫的約會。",
-        money: "收支平衡，有機會發現不錯的理財小道消息。",
-        closing: "保持微笑，好運自然會一直跟著你哦！😊"
+    node2: {
+        title: "第二章：他的微笑",
+        text: "他看到你走近，驚訝地露出了溫柔的微笑：『原來你也轉來這裡了！好巧。』他拍了拍身邊乾淨的空位，似乎在期待什麼。",
+        choices: [
+            { text: "順勢坐到他旁邊的空位。", target: "node4" },
+            { text: "簡單寒暄後，紅著臉跑到後排的空位。", target: "node5" }
+        ]
     },
-    {
-        name: "小吉 🌤️",
-        desc: "微風輕拂的好日子，雖然沒有驚喜，卻有滿滿的小確幸。",
-        work: "按部就班完成任務，下班後可以好好放鬆。",
-        study: "適合溫故知新，把之前的筆記拿出來複習會有收穫。",
-        love: "平淡見真情，一個溫暖的問候就能讓對方開心很久。",
-        money: "花點小錢犒賞自己是可以的，記得要節制。",
-        closing: "平凡也是一種幸福，享受當下的每一刻吧！☕"
+    node3: {
+        title: "第二章：安靜的角落",
+        text: "你挑了後排靠窗的位子，正準備趴下休息掩飾緊張時，他卻突然走到你桌前，輕輕敲了敲桌面，溫柔地看著你。",
+        choices: [
+            { text: "假裝在睡覺，不理會他。", target: "node6" },
+            { text: "抬起頭，有些慌亂地問他：『怎麼了？』", target: "node5" }
+        ]
     },
-    {
-        name: "平平 ☁️",
-        desc: "平靜如水的一天，正是沉澱心靈的好時機。",
-        work: "沒有大起大落，建議處理一些日常瑣碎的事務。",
-        study: "需要一點專注力，別被外界的事物過度干擾。",
-        love: "順其自然最好，不用刻意強求進展。",
-        money: "守財為主，不宜進行高風險的投資行為。",
-        closing: "沒有消息就是好消息，給自己的心放個假吧。🧘"
+    node4: {
+        title: "第三章：心跳的距離",
+        text: "你坐下後，兩人靠得很近。他從書包裡拿出一盒你最喜歡的草莓牛奶遞給你：『好久不見，這個給你，當作重逢的禮物吧。』",
+        choices: [
+            { text: "開心地收下，並對著他露出燦爛的笑容。", target: "ending1" },
+            { text: "覺得太快了，有些害羞地拒絕：『不用啦...』", target: "ending2" }
+        ]
     },
-    {
-        name: "蓄力中 🌧️",
-        desc: "遇到一點小雨沒關係，這是為了綻放更美的彩虹！",
-        work: "可能會遇到一些小挑戰，但這正是展現能力的機會。",
-        study: "遇到瓶頸千萬別氣餒，換個環境或方法會有奇效。",
-        love: "容易有小摩擦，多站在對方立場想一想就能化解。",
-        money: "可能會有一筆預期外的支出，請做好財務規劃。",
-        closing: "雨後總會天晴，你要相信自己有克服困難的力量！💪"
+    node5: {
+        title: "第三章：放學後的邀約",
+        text: "就這樣安靜地度過了一天。放學鐘聲響起，你在走廊上又遇到他，他看起來像是在特地等你。他走上前問你要不要一起走回家。",
+        choices: [
+            { text: "點點頭說：『好啊，剛好我們順路。』", target: "ending1" },
+            { text: "搖搖頭：『抱歉，我今天有事要先走。』", target: "ending3" }
+        ]
     },
-    {
-        name: "貴人相助 🤝",
-        desc: "出門遇貴人！今天無論遇到什麼問題都會有人伸出援手。",
-        work: "遇到難題大方提問，前輩或同事會給你極大幫助。",
-        study: "和同學組隊學習、討論，能讓你進步神速。",
-        love: "可能透過朋友介紹認識不錯的新對象。",
-        money: "聽取專業人士的建議，能幫你省下/賺到不少錢。",
-        closing: "心存感恩，你身邊的人都是你最棒的支持者！🙏"
+    node6: {
+        title: "第三章：錯過的交集",
+        text: "他看你毫無反應，無奈地輕嘆了一口氣，拿出一張紙條放在你桌上就離開了。你悄悄打開紙條，上面寫著：『放學後，在天台等你。』",
+        choices: [
+            { text: "緊握紙條，準時赴約去天台找他。", target: "ending1" },
+            { text: "把紙條夾進課本裡，假裝沒看到直接回家。", target: "ending3" }
+        ]
     },
-    {
-        name: "靈感爆發 💡",
-        desc: "腦洞大開的一天！你的點子將會驚豔所有人。",
-        work: "提出你的創意企劃吧，今天特別容易被採納。",
-        study: "寫作或創作靈感源源不絕，適合進行藝術類活動。",
-        love: "給伴侶一點意想不到的小驚喜，感情會迅速升溫。",
-        money: "你的某個點子或許能轉化為很棒的被動收入。",
-        closing: "相信你的直覺，盡情發揮你的創造力！🎨"
+    // 以下為結局節點
+    ending1: {
+        title: "【結局一：青澀的戀曲】",
+        text: "你們一起走在夕陽下的街道上，金黃色的陽光灑在你們身上。他輕輕牽起你的手，笑著說：『這次，我不會再讓你溜走了。』這是屬於你們，最浪漫的開局！",
+        choices: [] // 沒有選項代表抵達結局
     },
-    {
-        name: "戀愛達人 💖",
-        desc: "全宇宙都在為你的浪漫應援，今天是愛情的主場！",
-        work: "人見人愛的氣場讓你洽談業務無往不利。",
-        study: "在學習場合可能會遇到讓你非常在意的「那個人」。",
-        love: "單身者告白成功率高；有伴者甜蜜指數破表！",
-        money: "可能會為了心愛的人花錢，但你會覺得非常值得。",
-        closing: "散發你的魅力，大膽去愛吧！😍"
+    ending2: {
+        title: "【結局二：友達以上】",
+        text: "你們雖然保持著友好的距離，但那份在意彼此的心情卻每天都在增加。你們成了無話不談的好朋友，或許未來的某一天，這份關係會有新的突破吧！",
+        choices: []
     },
-    {
-        name: "財神爺眷顧 💰",
-        desc: "金光閃閃的一天！財運好到讓人嫉妒。",
-        work: "有機會談成大案子或是獲得實質的獎勵與加薪。",
-        study: "可能會意外獲得獎學金或是長輩給的零用錢。",
-        love: "適合送一份有質感的小禮物給對方，物超所值。",
-        money: "正財偏財都很旺，說不定對一下發票會有驚喜！",
-        closing: "財運來了擋不住，好好規劃你的財富哦！🤑"
-    },
-    {
-        name: "潛能覺醒 🔥",
-        desc: "戰鬥力滿點！你今天擁有突破極限的能量。",
-        work: "效率驚人，原本拖延的事情今天都能一口氣解決。",
-        study: "專注度達到最高境界，超難的題目也難不倒你。",
-        love: "充滿自信的你特別有吸引力，讓人挪不開視線。",
-        money: "果斷的決策力能幫你抓住稍縱即逝的賺錢良機。",
-        closing: "別限制自己的可能性，你是最棒的！🚀"
+    ending3: {
+        title: "【結局三：遺憾的擦肩而過】",
+        text: "那一天之後，你們就像兩條平行線，再也沒有太多交集。校園生活依舊繼續，但你的心裡總覺得空空落落的。有些緣分一旦錯過，就不會再重來。",
+        choices: []
     }
-];
+};
 
 // ==========================================
 // 網頁互動邏輯區
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-    const homeSection = document.getElementById('home-section');
-    const loadingSection = document.getElementById('loading-section');
-    const resultSection = document.getElementById('result-section');
-
-    const drawBtn = document.getElementById('draw-btn');
-    const retryBtn = document.getElementById('retry-btn');
-
-    // 結果欄位元素
-    const fortuneName = document.getElementById('fortune-name');
-    const fortuneDesc = document.getElementById('fortune-desc');
-    const fortuneWork = document.getElementById('fortune-work');
-    const fortuneStudy = document.getElementById('fortune-study');
-    const fortuneLove = document.getElementById('fortune-love');
-    const fortuneMoney = document.getElementById('fortune-money');
-    const fortuneClosing = document.getElementById('fortune-closing');
+    // 獲取 DOM 元素
+    const homeScreen = document.getElementById('home-screen');
+    const storyScreen = document.getElementById('story-screen');
+    const endingScreen = document.getElementById('ending-screen');
+    
+    const startBtn = document.getElementById('start-btn');
+    const restartBtn = document.getElementById('restart-btn');
+    
+    const storyTitle = document.getElementById('story-title');
+    const storyText = document.getElementById('story-text');
+    const choicesContainer = document.getElementById('choices-container');
+    
+    const endingTitle = document.getElementById('ending-title');
+    const endingText = document.getElementById('ending-text');
 
     // 綁定按鈕事件
-    drawBtn.addEventListener('click', drawFortune);
-    retryBtn.addEventListener('click', resetFortune);
+    startBtn.addEventListener('click', () => loadNode('start'));
+    restartBtn.addEventListener('click', () => resetGame());
 
-    function drawFortune() {
-        // 隱藏首頁，顯示載入中
-        homeSection.classList.remove('active');
-        loadingSection.classList.add('active');
+    // 載入特定的故事節點
+    function loadNode(nodeId) {
+        const nodeData = storyData[nodeId];
+        
+        // 判斷是否為結局節點 (沒有選項)
+        if (nodeData.choices.length === 0) {
+            showEnding(nodeData);
+            return;
+        }
 
-        // 隨機抽取結果
-        const randomIndex = Math.floor(Math.random() * fortunesData.length);
-        const result = fortunesData[randomIndex];
+        // 隱藏其他畫面，顯示故事畫面
+        hideAllScreens();
+        storyScreen.classList.add('active');
 
-        // 模擬載入時間 (1.5秒)，增加神祕感
-        setTimeout(() => {
-            // 隱藏載入中，顯示結果
-            loadingSection.classList.remove('active');
-            showResult(result);
-        }, 1500);
+        // 更新故事內容
+        storyTitle.textContent = nodeData.title;
+        storyText.textContent = nodeData.text;
+
+        // 清空並動態生成選項按鈕
+        choicesContainer.innerHTML = '';
+        nodeData.choices.forEach(choice => {
+            const btn = document.createElement('button');
+            btn.className = 'choice-btn';
+            btn.textContent = choice.text;
+            
+            // 點擊選項後載入目標節點
+            btn.addEventListener('click', () => {
+                // 為了視覺連貫性，可以加上簡單的淡入淡出，這裡我們先直接切換
+                loadNode(choice.target);
+            });
+            
+            choicesContainer.appendChild(btn);
+        });
     }
 
-    function showResult(result) {
-        // 填入資料
-        fortuneName.textContent = result.name;
-        fortuneDesc.textContent = result.desc;
-        fortuneWork.textContent = result.work;
-        fortuneStudy.textContent = result.study;
-        fortuneLove.textContent = result.love;
-        fortuneMoney.textContent = result.money;
-        fortuneClosing.textContent = result.closing;
-
-        // 顯示結果區塊
-        resultSection.classList.add('active');
+    // 顯示結局畫面
+    function showEnding(endingData) {
+        hideAllScreens();
+        endingScreen.classList.add('active');
+        
+        endingTitle.textContent = endingData.title;
+        endingText.textContent = endingData.text;
     }
 
-    function resetFortune() {
-        // 隱藏結果區塊，顯示首頁
-        resultSection.classList.remove('active');
-        homeSection.classList.add('active');
+    // 重置遊戲回到首頁
+    function resetGame() {
+        hideAllScreens();
+        homeScreen.classList.add('active');
+    }
+
+    // 隱藏所有視圖的輔助函式
+    function hideAllScreens() {
+        homeScreen.classList.remove('active');
+        storyScreen.classList.remove('active');
+        endingScreen.classList.remove('active');
     }
 });

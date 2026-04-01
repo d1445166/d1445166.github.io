@@ -3,60 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>神秘星空占卜</title>
+    <title>初光之櫻：青澀互動小說</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="fortune-container">
-        
-        <!-- 首頁區塊 -->
-        <div id="home-section" class="active">
-            <div class="crystal-ball">🔮</div>
-            <h1>神秘星空占卜</h1>
-            <p>想知道今天的運勢如何嗎？<br>集中精神，點擊下方按鈕抽取你的專屬指引。</p>
-            <button id="draw-btn" class="mystic-btn">抽取運勢籤</button>
-        </div>
-
-        <!-- 載入中區塊 -->
-        <div id="loading-section">
-            <div class="spinner"></div>
-            <p>正在為您連結宇宙能量...</p>
-        </div>
-
-        <!-- 結果區塊 -->
-        <div id="result-section">
-            <h2 id="fortune-name">大吉 🌟</h2>
-            <p id="fortune-desc" class="desc-text">今日運氣極佳...</p>
-            
-            <div class="aspects-grid">
-                <div class="aspect-card">
-                    <span class="aspect-icon">💼</span>
-                    <h3>工作</h3>
-                    <p id="fortune-work">...</p>
-                </div>
-                <div class="aspect-card">
-                    <span class="aspect-icon">📚</span>
-                    <h3>學業</h3>
-                    <p id="fortune-study">...</p>
-                </div>
-                <div class="aspect-card">
-                    <span class="aspect-icon">💖</span>
-                    <h3>愛情</h3>
-                    <p id="fortune-love">...</p>
-                </div>
-                <div class="aspect-card">
-                    <span class="aspect-icon">💰</span>
-                    <h3>金錢</h3>
-                    <p id="fortune-money">...</p>
-                </div>
-            </div>
-
-            <p id="fortune-closing" class="closing-text">結語...</p>
-            <button id="retry-btn" class="mystic-btn outline">再占卜一次</button>
-        </div>
-
+    <!-- 漂浮櫻花裝飾 (CSS繪製) -->
+    <div class="petals-container">
+        <div class="petal p1"></div>
+        <div class="petal p2"></div>
+        <div class="petal p3"></div>
+        <div class="petal p4"></div>
+        <div class="petal p5"></div>
     </div>
+
+    <div class="game-container">
+        <!-- 首頁畫面 -->
+        <div id="home-screen" class="screen active">
+            <div class="icon-heart">🌸</div>
+            <h1 class="main-title">初光之櫻：青澀回憶</h1>
+            <p class="intro-text">這是一段關於青春、重逢與選擇的故事。<br>你的每一個決定，都會引導向不同的結局。</p>
+            <button id="start-btn" class="action-btn">開始故事</button>
+        </div>
+
+        <!-- 故事選擇畫面 -->
+        <div id="story-screen" class="screen">
+            <div class="story-content card">
+                <h2 id="story-title">章節名稱</h2>
+                <div class="divider"></div>
+                <p id="story-text">故事內容敘述...</p>
+            </div>
+            
+            <div id="choices-container" class="choices-area">
+                <!-- 選項按鈕將會透過 JavaScript 動態生成到這裡 -->
+            </div>
+        </div>
+
+        <!-- 結局畫面 -->
+        <div id="ending-screen" class="screen">
+            <div class="ending-content card">
+                <div class="ending-icon">✨</div>
+                <h2 id="ending-title" class="ending-title">結局名稱</h2>
+                <div class="divider"></div>
+                <p id="ending-text" class="ending-text">結局詳細內容...</p>
+            </div>
+            <button id="restart-btn" class="action-btn outline">重新開始故事</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
